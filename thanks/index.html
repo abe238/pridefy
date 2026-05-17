@@ -8,32 +8,99 @@
 <link rel="canonical" href="https://pridefy.com/thanks/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600;9..144,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: oklch(0.985 0.005 75);
-    --bg-soft: oklch(0.965 0.008 75);
-    --ink: oklch(0.20 0.018 60);
-    --ink-soft: oklch(0.42 0.015 60);
-    --ink-mute: oklch(0.58 0.012 65);
-    --rule: oklch(0.86 0.008 70);
-    --accent: oklch(0.55 0.13 35);
-    --sage: oklch(0.62 0.08 145);
+    --bg:           oklch(0.97 0.012 20);
+    --bg-soft:      oklch(0.94 0.022 18);
+    --bg-card:      oklch(0.99 0.006 20);
+    --ink:          oklch(0.16 0.025 25);
+    --ink-soft:     oklch(0.38 0.02 25);
+    --ink-mute:     oklch(0.55 0.018 25);
+    --rule:         oklch(0.85 0.025 18);
+    --accent:       oklch(0.60 0.24 12);
+    --sage:         oklch(0.62 0.12 145);
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); }
   body { font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
-  .page { max-width: 52ch; padding: 3rem 2rem; text-align: center; }
-  .check { font-size: 3rem; color: var(--sage); margin-bottom: 1rem; line-height: 1; }
-  h1 { font-family: "Fraunces", Georgia, serif; font-size: 2.4rem; font-weight: 600; letter-spacing: -0.025em; margin: 0 0 0.6rem; }
-  p { font-size: 1.05rem; color: var(--ink-soft); margin: 0 0 1rem; max-width: 44ch; margin-left: auto; margin-right: auto; }
-  .timeline { background: var(--bg-soft); border: 1px solid var(--rule); border-radius: 8px; padding: 1.5rem; margin: 2rem auto; max-width: 44ch; text-align: left; }
-  .timeline h3 { font-family: "Inter", sans-serif; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-mute); margin: 0 0 0.85rem; }
-  .timeline ol { padding-left: 1.25rem; margin: 0; font-size: 0.92rem; color: var(--ink-soft); }
-  .timeline li { margin: 0.4rem 0; }
-  .kicker { font-family: "JetBrains Mono", monospace; font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); font-weight: 500; margin-bottom: 1rem; }
-  a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
-  .footer-link { font-family: "JetBrains Mono", monospace; font-size: 0.78rem; margin-top: 2.5rem; color: var(--ink-mute); }
+  .page { max-width: 54ch; padding: 3rem 2rem; text-align: center; }
+
+  .check {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--bg);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 0 auto 1.75rem;
+    box-shadow: 0 8px 24px -8px oklch(0.60 0.24 12 / 0.4);
+  }
+  .kicker {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  h1 {
+    font-family: "Instrument Serif", Georgia, serif;
+    font-style: italic;
+    font-size: clamp(2.6rem, 6vw, 3.6rem);
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    margin: 0 0 1rem;
+    line-height: 1.05;
+    color: var(--ink);
+  }
+  p {
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+    margin: 0 auto 1rem;
+    max-width: 44ch;
+  }
+  .timeline {
+    background: var(--bg-card);
+    border: 1.5px solid var(--rule);
+    border-radius: 12px;
+    padding: 1.75rem 2rem;
+    margin: 2.5rem auto;
+    max-width: 46ch;
+    text-align: left;
+  }
+  .timeline h3 {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.74rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin: 0 0 1rem;
+  }
+  .timeline ol {
+    padding-left: 1.4rem;
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+  }
+  .timeline li {
+    margin: 0.55rem 0;
+    line-height: 1.55;
+  }
+  .timeline li strong { color: var(--ink); font-weight: 600; }
+
+  a { color: var(--accent); text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1.5px; }
+  a:hover { text-decoration-thickness: 2.5px; }
+
+  .footer-link { font-family: "JetBrains Mono", monospace; font-size: 0.78rem; margin-top: 2.5rem; color: var(--ink-mute); letter-spacing: 0.06em; }
+  .footer-link a { color: var(--ink-mute); text-decoration: none; }
+  .footer-link a:hover { color: var(--accent); }
 </style>
 </head>
 <body>

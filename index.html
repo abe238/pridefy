@@ -48,64 +48,170 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600;9..144,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: oklch(0.985 0.005 75);
-    --bg-soft: oklch(0.965 0.008 75);
-    --ink: oklch(0.20 0.018 60);
-    --ink-soft: oklch(0.42 0.015 60);
-    --ink-mute: oklch(0.58 0.012 65);
-    --rule: oklch(0.86 0.008 70);
-    --accent: oklch(0.55 0.13 35);
-    --accent-deep: oklch(0.42 0.13 35);
-    --accent-soft: oklch(0.94 0.04 40);
-    --sage: oklch(0.62 0.08 145);
-    --focus: oklch(0.55 0.16 245);
+    --bg:           oklch(0.97 0.012 20);
+    --bg-soft:      oklch(0.94 0.022 18);
+    --bg-card:      oklch(0.99 0.006 20);
+    --ink:          oklch(0.16 0.025 25);
+    --ink-soft:     oklch(0.38 0.02 25);
+    --ink-mute:     oklch(0.55 0.018 25);
+    --rule:         oklch(0.85 0.025 18);
+    --rule-strong:  oklch(0.20 0.025 25);
+    --accent:       oklch(0.60 0.24 12);
+    --accent-deep:  oklch(0.46 0.22 12);
+    --accent-bg:    oklch(0.94 0.07 15);
+    --gold:         oklch(0.78 0.16 75);
+    --sage:         oklch(0.62 0.12 145);
+    --focus:        oklch(0.58 0.22 12);
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); }
   body {
     font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     font-size: 17px;
-    line-height: 1.6;
+    line-height: 1.55;
     font-feature-settings: "ss01", "cv11", "tnum";
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
-  .page { max-width: 56ch; margin: 0 auto; padding: 5rem 2rem 6rem; }
-  h1, h2, .domain { font-family: "Fraunces", Georgia, serif; font-weight: 600; letter-spacing: -0.025em; line-height: 1.05; color: var(--ink); }
-  .kicker {
+  .page { max-width: 60ch; margin: 0 auto; padding: 4rem 2rem 6rem; }
+
+  .serif { font-family: "Instrument Serif", Georgia, serif; font-weight: 400; }
+
+  /* --- Top bar --- */
+  .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     font-family: "JetBrains Mono", monospace;
     font-size: 0.74rem;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 4rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .top .brand { font-family: "Instrument Serif", serif; font-style: italic; font-size: 1.4rem; letter-spacing: -0.02em; color: var(--ink); font-weight: 400; text-transform: none; line-height: 1; }
+  .top .brand strong { font-weight: 400; color: var(--accent); }
+  .top .meta { display: flex; gap: 1.25rem; align-items: center; font-weight: 500; }
+
+  /* --- Hero --- */
+  .hero { margin-bottom: 3rem; }
+  .for-sale {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--accent);
-    font-weight: 500;
-    margin-bottom: 1.75rem;
-  }
-  .kicker .dot { display: inline-block; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; vertical-align: middle; margin-right: 0.5rem; transform: translateY(-1px); }
-  .domain {
-    font-size: clamp(3rem, 9vw, 4.6rem);
     font-weight: 600;
-    margin: 0 0 0.4rem;
+    margin-bottom: 1.25rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+  }
+  .for-sale::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    display: inline-block;
+  }
+  h1.domain {
+    font-family: "Instrument Serif", Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(4.5rem, 14vw, 8rem);
+    line-height: 0.92;
+    letter-spacing: -0.04em;
+    margin: 0 0 1.25rem;
     color: var(--ink);
   }
-  .domain-tld { color: var(--accent); font-weight: 600; }
-  .status { font-family: "Fraunces", serif; font-size: 1.4rem; font-weight: 300; font-style: italic; color: var(--ink-soft); margin: 0 0 2.5rem; }
-  p { margin: 0 0 1.1rem; color: var(--ink); }
-  p.lead { font-size: 1.08rem; line-height: 1.65; color: var(--ink-soft); }
+  h1.domain .tld { color: var(--accent); font-style: italic; }
+  .status {
+    font-family: "Instrument Serif", serif;
+    font-style: italic;
+    font-size: 1.5rem;
+    line-height: 1.3;
+    font-weight: 400;
+    color: var(--ink-soft);
+    margin: 0 0 2rem;
+    max-width: 32ch;
+  }
+  p.lead {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 56ch;
+    margin: 0 0 1rem;
+  }
   p.lead strong { color: var(--ink); font-weight: 500; }
 
-  .specs { margin: 2.5rem 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 1.25rem 0; }
-  .specs dl { margin: 0; display: grid; grid-template-columns: 16ch 1fr; row-gap: 0.5rem; column-gap: 1rem; font-size: 0.92rem; }
-  .specs dt { font-family: "JetBrains Mono", monospace; font-size: 0.74rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-mute); padding-top: 0.15rem; font-weight: 500; }
-  .specs dd { margin: 0; color: var(--ink); font-variant-numeric: tabular-nums; }
+  /* --- Specs --- */
+  .specs {
+    margin: 3rem 0;
+    padding: 1.5rem 0;
+    border-top: 1.5px solid var(--rule-strong);
+    border-bottom: 1.5px solid var(--rule-strong);
+  }
+  .specs dl {
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem 2rem;
+  }
+  .specs > dl > div { display: flex; flex-direction: column; gap: 0.25rem; }
+  .specs dt {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    font-weight: 600;
+  }
+  .specs dd {
+    margin: 0;
+    color: var(--ink);
+    font-size: 0.98rem;
+    font-variant-numeric: tabular-nums;
+    font-weight: 500;
+  }
+  .specs dd .accent { color: var(--accent); }
 
-  .cta-block { margin: 2.5rem 0 0; }
-  .price-label { font-family: "JetBrains Mono", monospace; font-size: 0.74rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-mute); margin-bottom: 0.4rem; }
-  .price { font-family: "Fraunces", serif; font-size: 2.6rem; font-weight: 600; line-height: 1; margin: 0 0 1.5rem; color: var(--ink); font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
-  .price .cents { color: var(--ink-mute); }
+  /* --- CTA --- */
+  .cta-block { margin: 3rem 0; }
+  .cta-row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+  .price-stack { display: flex; flex-direction: column; }
+  .price-label {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 0.3rem;
+    font-weight: 600;
+  }
+  .price {
+    font-family: "Instrument Serif", serif;
+    font-style: italic;
+    font-size: clamp(3rem, 7vw, 4.5rem);
+    font-weight: 400;
+    line-height: 0.95;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.03em;
+  }
+  .price .cur { color: var(--ink-mute); font-size: 0.55em; font-style: normal; font-family: "JetBrains Mono", monospace; font-weight: 500; vertical-align: 0.45em; margin-left: 0.25rem; letter-spacing: 0.06em; }
 
   .btn {
     display: inline-flex;
@@ -113,115 +219,247 @@
     justify-content: center;
     gap: 0.65rem;
     font-family: "Inter", sans-serif;
-    font-size: 0.96rem;
-    font-weight: 500;
-    padding: 1rem 1.5rem;
-    border-radius: 4px;
-    border: 1.5px solid;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 1.1rem 1.75rem;
+    border-radius: 999px;
+    border: 2px solid;
     text-decoration: none;
     cursor: pointer;
-    transition: background 180ms cubic-bezier(0.22, 1, 0.36, 1), color 180ms cubic-bezier(0.22, 1, 0.36, 1), border-color 180ms cubic-bezier(0.22, 1, 0.36, 1);
+    transition: background 220ms cubic-bezier(0.22, 1, 0.36, 1), color 220ms cubic-bezier(0.22, 1, 0.36, 1), border-color 220ms cubic-bezier(0.22, 1, 0.36, 1), transform 180ms cubic-bezier(0.22, 1, 0.36, 1);
   }
   .btn-primary { background: var(--accent); color: var(--bg); border-color: var(--accent); }
-  .btn-primary:hover { background: var(--accent-deep); border-color: var(--accent-deep); }
+  .btn-primary:hover { background: var(--accent-deep); border-color: var(--accent-deep); transform: translateY(-1px); }
   .btn-ghost { background: transparent; color: var(--ink); border-color: var(--ink); }
-  .btn-ghost:hover { background: var(--ink); color: var(--bg); }
-  .btn .arrow { font-family: "JetBrains Mono", monospace; }
+  .btn-ghost:hover { background: var(--ink); color: var(--bg); transform: translateY(-1px); }
+  .btn .arrow { font-family: "JetBrains Mono", monospace; font-weight: 500; }
 
-  .or { display: flex; align-items: center; gap: 1rem; margin: 3rem 0 2rem; color: var(--ink-mute); font-family: "JetBrains Mono", monospace; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; }
-  .or::before, .or::after { content: ""; flex: 1; border-top: 1px solid var(--rule); }
+  .brief-link {
+    margin-top: 1.25rem;
+    font-size: 0.92rem;
+    color: var(--ink-mute);
+  }
+  .brief-link a { color: var(--accent); text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1.5px; font-weight: 500; }
+  .brief-link a:hover { text-decoration-thickness: 2.5px; }
 
-  .offer { background: var(--bg-soft); border: 1px solid var(--rule); border-radius: 8px; padding: 2rem 1.75rem; }
-  .offer h2 { font-size: 1.5rem; margin: 0 0 0.35rem; font-weight: 600; }
-  .offer .sub { font-size: 0.92rem; color: var(--ink-soft); margin: 0 0 1.5rem; }
-  .form-grid { display: grid; gap: 1rem; }
+  /* --- Divider --- */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin: 3.5rem 0;
+    color: var(--ink-mute);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .divider::before, .divider::after { content: ""; flex: 1; border-top: 1px solid var(--rule); }
+
+  /* --- Offer form --- */
+  .offer {
+    background: var(--bg-card);
+    border: 1px solid var(--rule);
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    box-shadow: 0 1px 0 oklch(0.92 0.02 18);
+  }
+  .offer h2 {
+    font-family: "Instrument Serif", serif;
+    font-style: italic;
+    font-size: 2.2rem;
+    font-weight: 400;
+    margin: 0 0 0.4rem;
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+  }
+  .offer .sub { font-size: 0.95rem; color: var(--ink-soft); margin: 0 0 1.75rem; }
+  .form-grid { display: grid; gap: 1.1rem; }
   .field { display: flex; flex-direction: column; gap: 0.4rem; }
-  .field label { font-family: "JetBrains Mono", monospace; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-mute); font-weight: 500; }
+  .field label {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    font-weight: 600;
+  }
   .field input, .field textarea {
     font-family: "Inter", sans-serif;
     font-size: 1rem;
-    padding: 0.75rem 0.85rem;
-    border: 1px solid var(--rule);
-    border-radius: 4px;
+    padding: 0.85rem 1rem;
+    border: 1.5px solid var(--rule);
+    border-radius: 8px;
     background: var(--bg);
     color: var(--ink);
     transition: border-color 150ms ease-out, box-shadow 150ms ease-out;
   }
-  .field input:focus, .field textarea:focus { outline: none; border-color: var(--focus); box-shadow: 0 0 0 3px oklch(0.55 0.16 245 / 0.18); }
-  .field textarea { min-height: 5rem; resize: vertical; }
-  .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .field input:focus, .field textarea:focus {
+    outline: none;
+    border-color: var(--focus);
+    box-shadow: 0 0 0 4px oklch(0.60 0.24 12 / 0.16);
+  }
+  .field textarea { min-height: 5rem; resize: vertical; line-height: 1.5; }
+  .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
   .honey { position: absolute; left: -10000px; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
-  .submit-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 0.5rem; flex-wrap: wrap; }
-  .fine { font-size: 0.78rem; color: var(--ink-mute); margin: 0; max-width: 30ch; }
+  .submit-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 0.75rem;
+    flex-wrap: wrap;
+  }
+  .fine { font-size: 0.82rem; color: var(--ink-mute); margin: 0; max-width: 30ch; line-height: 1.45; }
 
-  .trust { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--rule); }
-  .trust h3 { font-family: "Inter", sans-serif; font-size: 0.74rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-mute); margin: 0 0 1rem; }
-  .trust ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.55rem; font-size: 0.9rem; color: var(--ink-soft); }
-  .trust li { padding-left: 1.4rem; position: relative; }
-  .trust li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--sage); font-weight: 600; }
+  /* --- Trust --- */
+  .trust { margin-top: 4rem; }
+  .trust h3 {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin: 0 0 1.25rem;
+  }
+  .trust ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.7rem; font-size: 0.95rem; color: var(--ink-soft); }
+  .trust li { padding-left: 1.6rem; position: relative; line-height: 1.5; }
+  .trust li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 1rem;
+  }
 
-  footer { margin-top: 4rem; font-size: 0.78rem; color: var(--ink-mute); font-family: "JetBrains Mono", monospace; letter-spacing: 0.04em; }
+  /* --- FAQ --- */
+  .faq { margin-top: 4rem; }
+  .faq h3 {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin: 0 0 1.25rem;
+  }
+  .faq details {
+    border-bottom: 1px solid var(--rule);
+    padding: 1.1rem 0;
+  }
+  .faq details:first-of-type { border-top: 1px solid var(--rule); }
+  .faq summary {
+    cursor: pointer;
+    font-family: "Instrument Serif", serif;
+    font-style: italic;
+    font-size: 1.25rem;
+    font-weight: 400;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    line-height: 1.3;
+    color: var(--ink);
+    transition: color 150ms ease-out;
+  }
+  .faq summary:hover { color: var(--accent); }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary .toggle {
+    font-family: "JetBrains Mono", monospace;
+    color: var(--ink-mute);
+    font-size: 1rem;
+    font-style: normal;
+    transition: transform 200ms ease-out, color 150ms ease-out;
+  }
+  .faq details[open] summary .toggle { transform: rotate(45deg); color: var(--accent); }
+  .faq details p {
+    font-size: 0.96rem;
+    color: var(--ink-soft);
+    margin: 0.85rem 0 0;
+    max-width: 56ch;
+    line-height: 1.55;
+  }
+  .faq details p a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
 
-  @media (max-width: 540px) {
-    .page { padding: 3rem 1.25rem 4rem; }
-    .specs dl { grid-template-columns: 13ch 1fr; }
+  /* --- Footer --- */
+  footer {
+    margin-top: 5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--rule);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.74rem;
+    letter-spacing: 0.06em;
+    color: var(--ink-mute);
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 600px) {
+    .page { padding: 2rem 1.25rem 4rem; }
+    .top { margin-bottom: 2.5rem; }
+    .specs dl { grid-template-columns: 1fr; gap: 1rem; }
     .form-row-2 { grid-template-columns: 1fr; }
+    .cta-row { align-items: flex-start; }
+    h1.domain { font-size: clamp(3.5rem, 16vw, 5rem); }
   }
 </style>
 </head>
 <body>
 <main class="page">
 
-  <div class="kicker"><span class="dot"></span>Domain for acquisition</div>
+  <header class="top">
+    <span class="brand"><strong>p</strong>ridefy<em>.com</em></span>
+    <span class="meta">7 chars · .com · 2015</span>
+  </header>
 
-  <h1 class="domain">pridefy<span class="domain-tld">.com</span></h1>
-  <p class="status">For sale, by the original owner since 2015.</p>
+  <section class="hero">
+    <div class="for-sale">For sale</div>
+    <h1 class="domain">pridefy<span class="tld">.com</span></h1>
+    <p class="status">A brandable, single-owner .com, ready to move.</p>
+    <p class="lead">
+      Seven letters. A SaaS-verb suffix on a five-letter root. Eleven years of clean WHOIS, no prior owners, no UDRP. Originally a small Pride-month overlay tool, the name carries semantic weight in <strong>LGBTQ+ tech, community apps, healthcare, and identity-forward consumer brands</strong>. Currently unused.
+    </p>
+  </section>
 
-  <p class="lead">
-    A short, brandable <strong>.com</strong> with a SaaS-verb suffix on a five-letter root. Eleven years of clean WHOIS, no trademark disputes, no SEO penalties, no prior owners. Originally a small Pride-month picture-overlay tool, the name carries semantic weight in LGBTQ+ tech, community apps, and any product where "verb plus identity affirmation" lands right. Equally workable as a generic brand for school pride, achievement, or recognition products.
-  </p>
-
-  <section class="specs" aria-label="Domain details">
+  <section class="specs" aria-label="Domain at a glance">
     <dl>
-      <dt>Registered</dt>      <dd>June 2015</dd>
-      <dt>Age</dt>             <dd>11 years</dd>
-      <dt>Length</dt>          <dd>7 characters (root: 5)</dd>
-      <dt>TLD</dt>             <dd>.com</dd>
-      <dt>Backorders</dt>      <dd>None on record</dd>
-      <dt>Currently in use</dt><dd>No, parked at this sales page</dd>
-      <dt>Sale method</dt>     <dd>Afternic-managed escrow</dd>
-      <dt>Transfer</dt>        <dd>Same day to a GoDaddy account; 5 to 7 days otherwise</dd>
+      <div><dt>Registered</dt><dd>June 2015</dd></div>
+      <div><dt>Age</dt><dd>11 years <span class="accent">·</span> single owner</dd></div>
+      <div><dt>Length</dt><dd>7 chars <span class="accent">·</span> 5-letter root</dd></div>
+      <div><dt>TLD</dt><dd>.com</dd></div>
+      <div><dt>UDRP history</dt><dd>None</dd></div>
+      <div><dt>Trademark</dt><dd>No active marks on this form</dd></div>
+      <div><dt>Sale method</dt><dd>Afternic escrow</dd></div>
+      <div><dt>Transfer</dt><dd>Same-day push or 5–7 days</dd></div>
     </dl>
   </section>
 
-  <div class="cta-block">
-    <div class="price-label">Buy now</div>
-    <div class="price">$4,995<span class="cents"> USD</span></div>
-    <!--
-      The Afternic listing URL pattern below works the moment the listing goes live.
-      If you list elsewhere, replace href with that listing URL.
-    -->
-    <a class="btn btn-primary" href="https://www.afternic.com/domains/pridefy.com/details" rel="noopener" target="_blank">
-      Buy on Afternic <span class="arrow">→</span>
-    </a>
-    <p style="margin-top: 1.25rem; font-size: 0.9rem; color: var(--ink-mute);">
-      Diligence-minded? <a href="/brief/" style="color: var(--accent); text-decoration: underline; text-underline-offset: 3px;">Read the full acquisition brief</a> (heritage, brand value, comparable sales, terms).
+  <section class="cta-block">
+    <div class="cta-row">
+      <div class="price-stack">
+        <div class="price-label">Buy now</div>
+        <div class="price">$4,995<span class="cur">USD</span></div>
+      </div>
+      <a class="btn btn-primary" href="https://www.afternic.com/domains/pridefy.com/details" rel="noopener" target="_blank">
+        Buy on Afternic <span class="arrow">→</span>
+      </a>
+    </div>
+    <p class="brief-link">
+      Doing diligence? <a href="/brief/">Read the acquisition brief</a> — heritage, brand value, comparable sales, sale terms.
     </p>
-  </div>
+  </section>
 
-  <div class="or">or</div>
+  <div class="divider">or make an offer</div>
 
   <section class="offer" id="offer">
     <h2>Make an offer</h2>
-    <p class="sub">Serious offers only. We respond within 48 hours, on weekdays.</p>
-    <!--
-      This form posts to Web3Forms (https://web3forms.com), a free no-signup-needed relay.
-      To activate:
-        1. Visit https://web3forms.com, enter the email you want submissions delivered to.
-        2. Web3Forms sends you an access key (a public token, safe to embed).
-        3. Replace ACCESS_KEY_REPLACE_ME below with that key.
-        4. Submissions arrive at the email you registered. No PII leaks on this page.
-    -->
+    <p class="sub">Serious offers only. Response within 48 hours, on weekdays.</p>
     <form class="form-grid" action="https://api.web3forms.com/submit" method="POST" autocomplete="on">
       <input type="hidden" name="access_key" value="de79ce4a-8dd1-481a-b4d3-501c58713fe7">
       <input type="hidden" name="subject" value="pridefy.com offer">
@@ -249,8 +487,8 @@
         <textarea id="message" name="message" maxlength="1000" placeholder="What you'd use the domain for, your timeline, anything that helps the conversation."></textarea>
       </div>
       <div class="submit-row">
-        <p class="fine">Submissions route to a private alias. Your contact info is never resold or shared.</p>
-        <button class="btn btn-ghost" type="submit">Submit offer</button>
+        <p class="fine">Submissions route through a private relay. Your contact info is never resold or shared.</p>
+        <button class="btn btn-primary" type="submit">Submit offer <span class="arrow">→</span></button>
       </div>
     </form>
   </section>
@@ -260,7 +498,7 @@
     <ul>
       <li>Funds held in escrow by Afternic / Escrow.com until the transfer completes</li>
       <li>Domain is registrar-locked at GoDaddy, WHOIS privacy enabled</li>
-      <li>Same-day push to any GoDaddy account; 5 to 7 day registrar transfer otherwise</li>
+      <li>Same-day push to any GoDaddy account; 5–7 day registrar transfer otherwise</li>
       <li>AuthCode released only through escrow service messaging, after funds clear</li>
       <li>No prior owners, no UDRP history, no trademark disputes on file</li>
       <li>Wayback Machine preserves the full 11-year history if you want to verify</li>
@@ -268,47 +506,32 @@
   </aside>
 
   <section class="faq" aria-label="Buyer questions">
-    <h3 style="font-family: 'Inter', sans-serif; font-size: 0.74rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-mute); margin: 4rem 0 1.25rem; padding-top: 2rem; border-top: 1px solid var(--rule);">Common buyer questions</h3>
-    <details style="border-bottom: 1px solid var(--rule); padding: 1rem 0;">
-      <summary style="cursor: pointer; font-weight: 500; font-size: 1rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-        <span>Why are you selling?</span>
-        <span style="font-family: 'JetBrains Mono', monospace; color: var(--ink-mute); font-size: 0.9rem;">+</span>
-      </summary>
-      <p style="font-size: 0.92rem; color: var(--ink-soft); margin: 0.75rem 0 0; max-width: 60ch;">The original Pride-month picture-overlay tool was retired in 2021. The domain is no longer in use and I am divesting unused assets. It is being sold at fair market value, not distressed.</p>
+    <h3>Common buyer questions</h3>
+    <details>
+      <summary><span>Why are you selling?</span><span class="toggle">+</span></summary>
+      <p>The original Pride-month picture-overlay tool was retired in 2021. The domain is no longer in use and the owner is divesting unused assets. Fair-market sale, not distressed.</p>
     </details>
-    <details style="border-bottom: 1px solid var(--rule); padding: 1rem 0;">
-      <summary style="cursor: pointer; font-weight: 500; font-size: 1rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-        <span>Can I verify the domain history?</span>
-        <span style="font-family: 'JetBrains Mono', monospace; color: var(--ink-mute); font-size: 0.9rem;">+</span>
-      </summary>
-      <p style="font-size: 0.92rem; color: var(--ink-soft); margin: 0.75rem 0 0; max-width: 60ch;">Yes. <a href="https://web.archive.org/web/2015*/pridefy.com" rel="noopener" style="color: var(--accent);">Wayback Machine</a> preserves the full history from 2015 onward. WHOIS shows the original 2015 registration date and continuous ownership. No prior owners, no UDRP filings on record.</p>
+    <details>
+      <summary><span>Can I verify the domain history?</span><span class="toggle">+</span></summary>
+      <p>Yes. <a href="https://web.archive.org/web/2015*/pridefy.com" rel="noopener">Wayback Machine</a> preserves the full history from 2015 onward. WHOIS shows the original registration date and continuous ownership. No prior owners, no UDRP filings.</p>
     </details>
-    <details style="border-bottom: 1px solid var(--rule); padding: 1rem 0;">
-      <summary style="cursor: pointer; font-weight: 500; font-size: 1rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-        <span>How does the transfer actually work?</span>
-        <span style="font-family: 'JetBrains Mono', monospace; color: var(--ink-mute); font-size: 0.9rem;">+</span>
-      </summary>
-      <p style="font-size: 0.92rem; color: var(--ink-soft); margin: 0.75rem 0 0; max-width: 60ch;">If you are at GoDaddy, same-day account-to-account push, no AuthCode needed. Otherwise, 5 to 7 days for a registrar transfer using the AuthCode released by Afternic's escrow service after funds clear. You never need to share account credentials with anyone.</p>
+    <details>
+      <summary><span>How does the transfer actually work?</span><span class="toggle">+</span></summary>
+      <p>If you are at GoDaddy, same-day account-to-account push, no AuthCode needed. Otherwise, 5 to 7 days for a registrar transfer using the AuthCode released by Afternic's escrow service after funds clear. You never need to share account credentials with anyone.</p>
     </details>
-    <details style="border-bottom: 1px solid var(--rule); padding: 1rem 0;">
-      <summary style="cursor: pointer; font-weight: 500; font-size: 1rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-        <span>Are there trademark concerns with "Pridefy"?</span>
-        <span style="font-family: 'JetBrains Mono', monospace; color: var(--ink-mute); font-size: 0.9rem;">+</span>
-      </summary>
-      <p style="font-size: 0.92rem; color: var(--ink-soft); margin: 0.75rem 0 0; max-width: 60ch;">"Pridefy" is a coined word with no active registered trademark on record at the USPTO under that exact form. The original use was a Pride-month consumer tool, not a service mark. New owners would need to clear their own intended use, but the domain itself has no UDRP history.</p>
+    <details>
+      <summary><span>Are there trademark concerns with "Pridefy"?</span><span class="toggle">+</span></summary>
+      <p>"Pridefy" is a coined word with no active registered trademark on record at the USPTO under that exact form. The original use was a Pride-month consumer tool, not a service mark. New owners would need to clear their own intended use, but the domain itself has no UDRP history.</p>
     </details>
-    <details style="border-bottom: 1px solid var(--rule); padding: 1rem 0;">
-      <summary style="cursor: pointer; font-weight: 500; font-size: 1rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-        <span>Is the price negotiable?</span>
-        <span style="font-family: 'JetBrains Mono', monospace; color: var(--ink-mute); font-size: 0.9rem;">+</span>
-      </summary>
-      <p style="font-size: 0.92rem; color: var(--ink-soft); margin: 0.75rem 0 0; max-width: 60ch;">$4,995 is the Buy-It-Now. Make-Offer is enabled. Submit a serious offer through the form above and you will get a response within 48 hours, on weekdays.</p>
+    <details>
+      <summary><span>Is the price negotiable?</span><span class="toggle">+</span></summary>
+      <p>$4,995 is the Buy-It-Now. Make-Offer is enabled. Submit a serious offer through the form above and you will get a response within 48 hours, on weekdays.</p>
     </details>
   </section>
 
   <footer>
-    pridefy.com / inquiries via the form above /
-    listing updated 2026-05-17
+    <span>pridefy.com</span>
+    <span>inquiries via the form above</span>
   </footer>
 
 </main>

@@ -13,87 +13,162 @@
 <link rel="canonical" href="https://pridefy.com/brief/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600;9..144,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: oklch(0.985 0.005 75);
-    --bg-soft: oklch(0.965 0.008 75);
-    --bg-card: oklch(0.995 0.003 75);
-    --ink: oklch(0.20 0.018 60);
-    --ink-soft: oklch(0.42 0.015 60);
-    --ink-mute: oklch(0.58 0.012 65);
-    --rule: oklch(0.86 0.008 70);
-    --accent: oklch(0.55 0.13 35);
-    --accent-deep: oklch(0.42 0.13 35);
-    --accent-soft: oklch(0.94 0.04 40);
-    --sage: oklch(0.62 0.08 145);
+    --bg:           oklch(0.97 0.012 20);
+    --bg-soft:      oklch(0.94 0.022 18);
+    --bg-card:      oklch(0.99 0.006 20);
+    --ink:          oklch(0.16 0.025 25);
+    --ink-soft:     oklch(0.38 0.02 25);
+    --ink-mute:     oklch(0.55 0.018 25);
+    --rule:         oklch(0.85 0.025 18);
+    --rule-strong:  oklch(0.20 0.025 25);
+    --accent:       oklch(0.60 0.24 12);
+    --accent-deep:  oklch(0.46 0.22 12);
+    --accent-bg:    oklch(0.94 0.07 15);
+    --sage:         oklch(0.62 0.12 145);
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); }
   body { font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 17px; line-height: 1.65; font-feature-settings: "ss01", "cv11", "tnum"; -webkit-font-smoothing: antialiased; }
   .page { max-width: 68ch; margin: 0 auto; padding: 4rem 2rem 6rem; }
-  h1, h2, h3 { font-family: "Fraunces", Georgia, serif; font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; color: var(--ink); }
-  h1 { font-size: clamp(2.6rem, 6vw, 3.8rem); font-weight: 800; letter-spacing: -0.025em; margin: 0 0 0.6rem; }
-  h2 { font-size: 1.75rem; margin: 3.5rem 0 1rem; }
-  h3 { font-size: 1.2rem; margin: 1.75rem 0 0.5rem; }
+  h1, h2, h3 { font-family: "Instrument Serif", Georgia, serif; font-weight: 400; line-height: 1.1; color: var(--ink); letter-spacing: -0.02em; }
+  h1 { font-style: italic; font-size: clamp(3rem, 8vw, 5rem); margin: 0 0 1rem; letter-spacing: -0.035em; }
+  h2 { font-style: italic; font-size: 2.1rem; margin: 4rem 0 1rem; letter-spacing: -0.025em; }
+  h3 { font-size: 1.2rem; margin: 1.75rem 0 0.5rem; font-style: italic; }
   p { margin: 0 0 1.1rem; max-width: 64ch; }
-  p.lead { font-size: 1.1rem; color: var(--ink-soft); }
+  p.lead { font-size: 1.12rem; color: var(--ink-soft); }
   strong { font-weight: 600; }
-  a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
-  a:hover { text-decoration-thickness: 2px; }
+  a { color: var(--accent); text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1.5px; }
+  a:hover { text-decoration-thickness: 2.5px; }
   ul, ol { padding-left: 1.25rem; max-width: 64ch; }
-  li { margin: 0.35rem 0; }
+  li { margin: 0.4rem 0; }
 
-  .kicker { font-family: "JetBrains Mono", monospace; font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); font-weight: 500; margin-bottom: 1.5rem; }
-  .nav-back { font-family: "JetBrains Mono", monospace; font-size: 0.78rem; text-decoration: none; color: var(--ink-mute); letter-spacing: 0.04em; margin-bottom: 2.5rem; display: inline-block; }
-  .nav-back:hover { color: var(--accent); }
+  .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.74rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 3rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .top .brand { font-family: "Instrument Serif", serif; font-style: italic; font-size: 1.3rem; letter-spacing: -0.02em; color: var(--ink); font-weight: 400; text-transform: none; line-height: 1; }
+  .top .brand strong { font-weight: 400; color: var(--accent); }
+  .top a.back { color: var(--ink-mute); text-decoration: none; font-weight: 500; }
+  .top a.back:hover { color: var(--accent); }
 
-  .dek { font-family: "Fraunces", serif; font-size: 1.35rem; line-height: 1.45; font-weight: 300; color: var(--ink-soft); font-style: italic; margin: 1rem 0 2rem; max-width: 58ch; }
+  .kicker { font-family: "JetBrains Mono", monospace; font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 1.25rem; display: inline-flex; align-items: center; gap: 0.55rem; }
+  .kicker::before { content: ""; width: 8px; height: 8px; background: var(--accent); border-radius: 50%; }
 
-  .summary-box { background: var(--bg-soft); border-left: 3px solid var(--accent); padding: 1.5rem 1.75rem; margin: 2.5rem 0; border-radius: 0 6px 6px 0; }
-  .summary-box h3 { margin: 0 0 0.5rem; font-family: "Inter", sans-serif; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-mute); }
+  .dek { font-family: "Instrument Serif", serif; font-style: italic; font-size: 1.5rem; line-height: 1.4; font-weight: 400; color: var(--ink-soft); margin: 1.5rem 0 2.5rem; max-width: 56ch; }
+
+  .summary-box {
+    background: var(--bg-card);
+    border: 1.5px solid var(--rule);
+    border-radius: 12px;
+    padding: 1.75rem 2rem;
+    margin: 2.5rem 0;
+  }
+  .summary-box h3 {
+    margin: 0 0 1rem;
+    font-family: "JetBrains Mono", monospace;
+    font-style: normal;
+    font-size: 0.74rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
   .summary-box ul { margin: 0; list-style: none; padding: 0; }
-  .summary-box li { display: flex; gap: 1.25rem; padding: 0.4rem 0; border-bottom: 1px solid var(--rule); }
+  .summary-box li { display: flex; gap: 1.25rem; padding: 0.5rem 0; border-bottom: 1px solid var(--rule); align-items: baseline; }
   .summary-box li:last-child { border-bottom: 0; }
-  .summary-box li strong { font-family: "JetBrains Mono", monospace; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-mute); font-weight: 500; min-width: 14ch; padding-top: 0.15rem; }
-  .summary-box li span { flex: 1; }
+  .summary-box li strong {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.74rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    font-weight: 600;
+    min-width: 14ch;
+  }
+  .summary-box li span { flex: 1; color: var(--ink); font-weight: 500; }
 
-  .compare-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; margin: 1rem 0; }
-  .compare-table thead th { text-align: left; padding: 0.65rem 0.85rem 0.6rem 0; font-family: "JetBrains Mono", monospace; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-mute); border-bottom: 1.5px solid var(--ink); font-weight: 500; }
-  .compare-table tbody td { padding: 0.6rem 0.85rem 0.6rem 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
-  .compare-table .num { font-variant-numeric: tabular-nums; }
+  .compare-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; margin: 1.25rem 0; }
+  .compare-table thead th {
+    text-align: left;
+    padding: 0.7rem 0.9rem 0.65rem 0;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    border-bottom: 1.5px solid var(--rule-strong);
+    font-weight: 600;
+  }
+  .compare-table tbody td { padding: 0.7rem 0.9rem 0.7rem 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  .compare-table .num { font-variant-numeric: tabular-nums; color: var(--accent); font-weight: 500; }
 
   .use-cases { display: grid; grid-template-columns: repeat(auto-fit, minmax(28ch, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
-  .use-case { border: 1px solid var(--rule); border-radius: 6px; padding: 1.1rem 1.25rem; background: var(--bg-card); }
-  .use-case h4 { font-family: "Fraunces", serif; font-size: 1.1rem; font-weight: 600; margin: 0 0 0.4rem; }
-  .use-case p { font-size: 0.9rem; line-height: 1.55; color: var(--ink-soft); margin: 0; }
+  .use-case {
+    border: 1.5px solid var(--rule);
+    border-radius: 10px;
+    padding: 1.25rem 1.4rem;
+    background: var(--bg-card);
+    transition: border-color 200ms ease-out, transform 200ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .use-case:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .use-case h4 { font-family: "Instrument Serif", serif; font-style: italic; font-size: 1.25rem; font-weight: 400; margin: 0 0 0.5rem; line-height: 1.2; color: var(--ink); }
+  .use-case p { font-size: 0.93rem; line-height: 1.55; color: var(--ink-soft); margin: 0; }
 
-  .cta-foot { margin: 4rem 0 2rem; padding: 2rem; background: var(--bg-soft); border-radius: 8px; text-align: center; }
-  .cta-foot h2 { margin: 0 0 0.5rem; font-size: 1.5rem; }
-  .cta-foot p { margin: 0 auto 1.5rem; max-width: 50ch; color: var(--ink-soft); }
-  .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1.5rem; border-radius: 4px; border: 1.5px solid; font-weight: 500; text-decoration: none; transition: background 180ms cubic-bezier(0.22, 1, 0.36, 1); }
+  .cta-foot {
+    margin: 4rem 0 2rem;
+    padding: 2.5rem;
+    background: var(--accent-bg);
+    border-radius: 16px;
+    text-align: center;
+  }
+  .cta-foot h2 {
+    margin: 0 0 0.6rem;
+    font-size: 1.8rem;
+    font-family: "Instrument Serif", serif;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--ink);
+  }
+  .cta-foot p { margin: 0 auto 1.75rem; max-width: 50ch; color: var(--ink-soft); }
+  .btn { display: inline-flex; align-items: center; gap: 0.55rem; padding: 0.95rem 1.6rem; border-radius: 999px; border: 2px solid; font-weight: 600; text-decoration: none; transition: background 220ms cubic-bezier(0.22, 1, 0.36, 1), color 220ms cubic-bezier(0.22, 1, 0.36, 1), transform 180ms cubic-bezier(0.22, 1, 0.36, 1); font-family: "Inter", sans-serif; font-size: 0.96rem; }
   .btn-primary { background: var(--accent); color: var(--bg); border-color: var(--accent); }
-  .btn-primary:hover { background: var(--accent-deep); border-color: var(--accent-deep); }
+  .btn-primary:hover { background: var(--accent-deep); border-color: var(--accent-deep); transform: translateY(-1px); }
   .btn-ghost { background: transparent; color: var(--ink); border-color: var(--ink); margin-left: 0.5rem; }
-  .btn-ghost:hover { background: var(--ink); color: var(--bg); }
+  .btn-ghost:hover { background: var(--ink); color: var(--bg); transform: translateY(-1px); }
 
-  footer { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--rule); font-size: 0.82rem; color: var(--ink-mute); font-family: "JetBrains Mono", monospace; letter-spacing: 0.04em; }
+  footer { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--rule); font-size: 0.78rem; color: var(--ink-mute); font-family: "JetBrains Mono", monospace; letter-spacing: 0.06em; }
 
   @media (max-width: 600px) {
     .page { padding: 2rem 1.25rem 4rem; }
-    .summary-box li { flex-direction: column; gap: 0.25rem; }
+    .summary-box li { flex-direction: column; gap: 0.25rem; align-items: flex-start; }
     .summary-box li strong { min-width: 0; }
     .btn-ghost { margin-left: 0; margin-top: 0.75rem; }
+    .cta-foot { padding: 2rem 1.5rem; }
   }
 </style>
 </head>
 <body>
 <main class="page">
 
-  <a class="nav-back" href="/">← back to pridefy.com</a>
+  <header class="top">
+    <span class="brand"><strong>p</strong>ridefy<em>.com</em></span>
+    <a class="back" href="/">← back to homepage</a>
+  </header>
 
-  <div class="kicker">Acquisition brief · revised 2026-05-17</div>
-  <h1>pridefy.com</h1>
+  <div class="kicker">Acquisition brief</div>
+  <h1>pridefy<em>.com</em></h1>
   <p class="dek">A serious-buyer dossier on a short, brandable .com that has been continuously owned by one party since 2015 and is being divested into an audience-attention window that only opens for two weeks a year.</p>
 
   <div class="summary-box">
@@ -101,13 +176,13 @@
     <ul>
       <li><strong>Domain</strong><span>pridefy.com</span></li>
       <li><strong>Registered</strong><span>June 29, 2015 at GoDaddy</span></li>
-      <li><strong>Age</strong><span>11 years (continuous single-owner)</span></li>
+      <li><strong>Age</strong><span>11 years, continuous single-owner</span></li>
       <li><strong>Length</strong><span>7 characters total, 5-letter root</span></li>
       <li><strong>TLD</strong><span>.com</span></li>
       <li><strong>Trademark status</strong><span>No active registered marks on this exact form</span></li>
       <li><strong>UDRP history</strong><span>None on record</span></li>
       <li><strong>SEO penalties</strong><span>None known</span></li>
-      <li><strong>Current use</strong><span>Sales page only (this domain)</span></li>
+      <li><strong>Current use</strong><span>Sales page only</span></li>
       <li><strong>Listed price</strong><span>$4,995 USD on Afternic, Make-Offer enabled</span></li>
       <li><strong>Sale method</strong><span>Afternic-managed escrow, GoDaddy push or registrar transfer</span></li>
     </ul>
@@ -119,7 +194,7 @@
   <p>The "pride" prefix carries semantic weight in two directions. The primary association is LGBTQ+ identity affirmation, particularly during the June Pride Month window when brand acquisition attention is highest. The secondary, broader association is achievement, recognition, school spirit, accomplishment. Both buyer pools are real.</p>
 
   <h2>Heritage</h2>
-  <p>The domain was registered on June 29, 2015 — three days after the U.S. Supreme Court ruling in Obergefell v. Hodges legalizing same-sex marriage nationwide. A small picture-overlay tool was launched on it: users could MMS a photo to a Twilio number and receive a rainbow-filtered version back. The tool was active through 2017, then quietly retired.</p>
+  <p>The domain was registered on June 29, 2015, three days after the U.S. Supreme Court ruling in Obergefell v. Hodges legalizing same-sex marriage nationwide. A small picture-overlay tool was launched on it: users could MMS a photo to a Twilio number and receive a rainbow-filtered version back. The tool was active through 2017, then quietly retired.</p>
   <p>The domain has been held by the same single owner since registration. There has been no flip, no transfer, no auction history, no chain of resellers. The <a href="https://web.archive.org/web/2015*/pridefy.com" rel="noopener">Wayback Machine</a> preserves the full 2015-onward history. This matters for a buyer because it eliminates a class of due-diligence risk: there is no hidden penalty, no abandoned redirect chain, no expired-and-recovered pattern that triggers Google's spam classifier.</p>
 
   <h2>Brand value</h2>
@@ -139,7 +214,7 @@
     </div>
     <div class="use-case">
       <h4>Pride-month campaign engine</h4>
-      <p>A consumer brand's annual Pride campaign HQ, owned URL across multiple years. Beats a `/pride-2026` subdirectory for brand persistence and direct-traffic.</p>
+      <p>A consumer brand's annual Pride campaign HQ, owned URL across multiple years. Beats a /pride-2026 subdirectory for brand persistence and direct-traffic.</p>
     </div>
     <div class="use-case">
       <h4>Affirming-care healthcare brand</h4>
@@ -155,7 +230,7 @@
     </div>
     <div class="use-case">
       <h4>Defensive acquisition</h4>
-      <p>A larger LGBTQ+ tech company (HER, Grindr, Hornet, etc.) buying it to prevent a competitor from owning the name. Defensive buys typically close fast and at premium.</p>
+      <p>A larger LGBTQ+ tech company (HER, Grindr, Hornet) buying it to prevent a competitor from owning the name. Defensive buys typically close fast and at premium.</p>
     </div>
   </div>
 
@@ -171,7 +246,7 @@
       <tr><td>Coined-word brandable</td><td class="num">$1,000–5,000</td><td>Discounted vs. dictionary words; premium vs. random strings</td></tr>
     </tbody>
   </table>
-  <p>The $4,995 list price sits at the upper edge of the typical range. Make-Offer accepts serious offers above $1,500; the realistic clearing zone is $2,000-$3,500 for an off-window buyer, $3,500-$4,995 for a Pride Month-aligned launch.</p>
+  <p>The $4,995 list price sits at the upper edge of the typical range. Make-Offer accepts serious offers above $1,500; the realistic clearing zone is $2,000–$3,500 for an off-window buyer, $3,500–$4,995 for a Pride Month-aligned launch.</p>
 
   <h2>Sale terms</h2>
   <ul>
@@ -184,18 +259,18 @@
   </ul>
 
   <h2>Why now</h2>
-  <p>Two reasons, in order of weight. First: the domain has been unused since 2021 and is part of a broader portfolio cleanup. The owner is divesting names that do not align with current projects. Second: Pride Month 2026 begins June 1, two weeks from this brief's drafting date. A buyer who acquires before June can build out a launch surface; after June, the audience attention is gone for another twelve months.</p>
-  <p>This is not a fire sale. The owner will hold the domain through three more renewal cycles if the price does not meet floor. But the highest-leverage window for a buyer is now.</p>
+  <p>Two reasons, in order of weight. First: the domain has been unused since 2021 and is part of a broader portfolio cleanup. The owner is divesting names that do not align with current projects. Second: Pride Month 2026 begins June 1. A buyer who acquires before June can build out a launch surface; after June, the audience attention is gone for another twelve months.</p>
+  <p>This is not a fire sale. The owner will hold the domain through additional renewal cycles if the price does not meet floor. But the highest-leverage window for a buyer is now.</p>
 
   <div class="cta-foot">
     <h2>Next step</h2>
-    <p>Submit an offer through the form on the homepage or buy at the listed price on Afternic. Both routes terminate in escrow. Responses to serious offers within 48 hours, on weekdays.</p>
-    <a href="/" class="btn btn-primary">Back to homepage</a>
+    <p>Submit an offer on the homepage or buy at the listed price on Afternic. Both routes terminate in escrow. Responses to serious offers within 48 hours, on weekdays.</p>
+    <a href="/" class="btn btn-primary">Back to homepage →</a>
     <a href="https://www.afternic.com/domains/pridefy.com/details" class="btn btn-ghost" rel="noopener" target="_blank">View Afternic listing</a>
   </div>
 
   <footer>
-    pridefy.com · acquisition brief · drafted 2026-05-17 · all numbers in USD
+    pridefy.com · acquisition brief · all figures in USD
   </footer>
 
 </main>
